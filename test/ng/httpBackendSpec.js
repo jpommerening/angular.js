@@ -308,7 +308,7 @@ describe('$httpBackend', function() {
 
   describe('JSONP', function() {
 
-    var SCRIPT_URL = /([^\?]*)\?cb=angular\.callbacks\.(.*)/;
+    var SCRIPT_URL = /([^\?]*)\?cb=angular[0-9]*\.callbacks\.(.*)/;
 
 
     it('should add script tag for JSONP request', function() {

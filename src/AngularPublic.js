@@ -7,6 +7,7 @@
     $LocaleProvider,
     $CompileProvider,
     
+    noConflict,
     htmlAnchorDirective,
     inputDirective,
     inputDirective,
@@ -99,6 +100,7 @@ var version = {
 
 
 function publishExternalAPI(angular){
+  var callbacks = {counter: 0};
   extend(angular, {
     'bootstrap': bootstrap,
     'copy': copy,
@@ -121,10 +123,12 @@ function publishExternalAPI(angular){
     'isElement': isElement,
     'isArray': isArray,
     'version': version,
+    'pid': 'angular' + ('' + Math.random()).substring(2),
     'isDate': isDate,
     'lowercase': lowercase,
     'uppercase': uppercase,
-    'callbacks': {counter: 0},
+    'callbacks': callbacks,
+    'noConflict': noConflict,
     '$$minErr': minErr,
     '$$csp': csp
   });
@@ -135,6 +139,10 @@ function publishExternalAPI(angular){
   } catch (e) {
     angularModule('ngLocale', []).provider('$locale', $LocaleProvider);
   }
+
+  window[angular.pid] = {
+    'callbacks': callbacks
+  };
 
   angularModule('ng', ['ngLocale'], ['$provide',
     function ngModule($provide) {

@@ -33,7 +33,7 @@ function createXhr(method) {
  */
 function $HttpBackendProvider() {
   this.$get = ['$browser', '$window', '$document', function($browser, $window, $document) {
-    return createHttpBackend($browser, createXhr, $browser.defer, $window.angular.callbacks, $document[0]);
+    return createHttpBackend($browser, createXhr, $browser.defer, $window[angular.pid].callbacks, $document[0]);
   }];
 }
 
@@ -52,7 +52,7 @@ function createHttpBackend($browser, createXhr, $browserDefer, callbacks, rawDoc
         callbacks[callbackId].data = data;
       };
 
-      var jsonpDone = jsonpReq(url.replace('JSON_CALLBACK', 'angular.callbacks.' + callbackId),
+      var jsonpDone = jsonpReq(url.replace('JSON_CALLBACK', angular.pid + '.callbacks.' + callbackId),
           function() {
         if (callbacks[callbackId].data) {
           completeRequest(callback, 200, callbacks[callbackId].data);
