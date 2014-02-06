@@ -3,5 +3,21 @@
  * (c) 2010-2014 Google, Inc. http://angularjs.org
  * License: MIT
  */
-(function(window, document){
-  var _jQuery = window.jQuery.noConflict(true);
+(function(window, angular, undefined) {
+
+  if( typeof define === 'function' && typeof define.amd === 'object' ) {
+    define( [ 'jquery' ], function( jQuery ) {
+      return angular( window, jQuery ).noConflict();
+    }, function (err) {
+      var failed = err.requireModules && err.requireModules[0];
+      if (failed === 'jquery') {
+        requirejs.undef(failed);
+        angular( window, undefined );
+      }
+    } );
+  } else {
+    angular( window, window.jQuery );
+  }
+
+
+}( ( typeof window !== 'undefined' && window ) || this, function( window, _jQuery, undefined ) {

@@ -17,8 +17,8 @@
  * {@link ngCookies.$cookieStore `$cookieStore`} for usage.
  */
 
-
-angular.module('ngCookies', ['ng']).
+/* global -ngModule */
+var ngModule = angular.module('ngCookies', ['ng']).
   /**
    * @ngdoc object
    * @name ngCookies.$cookies

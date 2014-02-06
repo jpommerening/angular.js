@@ -7,7 +7,9 @@
  *
  * Namespace from 'angular-mocks.js' which contains testing related code.
  */
-angular.mock = {};
+
+/* global -ngModule */
+var ngModule = angular.mock = {};
 
 /**
  * ! This is a private undocumented service !

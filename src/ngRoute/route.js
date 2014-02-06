@@ -16,9 +16,13 @@
  *
  * <div doc-module-components="ngRoute"></div>
  */
- /* global -ngRouteModule */
+
+/* global -ngRouteModule, -ngModule */
 var ngRouteModule = angular.module('ngRoute', ['ng']).
                         provider('$route', $RouteProvider);
+
+// export for UMD wrapper
+var ngModule = ngRouteModule;
 
 /**
  * @ngdoc object

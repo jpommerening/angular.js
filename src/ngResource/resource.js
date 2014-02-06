@@ -302,7 +302,9 @@ function shallowClearAndCopy(src, dst) {
  *		}]);
  * </pre>
  */
-angular.module('ngResource', ['ng']).
+
+/* global -ngResource */
+var ngModule = angular.module('ngResource', ['ng']).
   factory('$resource', ['$http', '$q', function($http, $q) {
 
     var DEFAULT_ACTIONS = {

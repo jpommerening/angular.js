@@ -20,6 +20,9 @@
  */
 
 // define ngTouch module
-/* global -ngTouch */
+/* global -ngTouch, -ngModule */
 var ngTouch = angular.module('ngTouch', []);
+
+// export for UMD wrapper
+var ngModule = ngTouch;
 

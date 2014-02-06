@@ -232,7 +232,8 @@
  *
  */
 
-angular.module('ngAnimate', ['ng'])
+/* global -ngModule */
+var ngModule = angular.module('ngAnimate', ['ng'])
 
   /**
    * @ngdoc object
